@@ -1,4 +1,4 @@
-function mpc = GenOnly
+function mpc = GenPlusRenew
 %CASE5  Power flow data for modified 5 bus, 5 gen case based on PJM 5-bus system
 %   Please see CASEFORMAT for details on the case file format.
 %
@@ -45,7 +45,7 @@ mpc.gen = [
 	1   0   0   4000   0   1   0   1   4000 0  0   0   0   0   0   0   0   0   0   0   0;
 	2   0   0   4000   0   1   0   1   4000 0  0   0   0   0   0   0   0   0   0   0   0;
     4   3   0   15   0   1   0   1   15 0  0   0   0   0   0   0   0   0   0   0   0;
-    5   2  0   20   0   1   0   1   20 15000  0   0   0   0   0   0   0   0   0   0   0;    
+    5   2  0   20   0   1   0   1   20 15  0   0   0   0   0   0   0   0   0   0   0;    
     
     
 ];

@@ -36,9 +36,22 @@ for i=3811:4192 %size(IndustrialRow,1)
     mpc.bus(:,3) = [Residence1Row(i,1);Residence2Row(i,1);Residence3Row(i,1);CommercialRow(i,1);IndustrialRow(i,1)];
     %Modify max gen capacity for each generator based on available Solar
     %and Wind Potential. Oil peaker and Coal base load are fixed
+%     if sum(mpc.bus(:,3))-sum([RenewPercent*SolarRow(i);RenewPercent*WindRow(i);20000])<= 18000
+%         mpc.gen(:,8)=[1;1;1;0];
+%     end
     mpc.gen(:,9)=[RenewPercent*SolarRow(i);RenewPercent*WindRow(i);50000;20000];
     %save the results of dcopf in a struct
+            mpc.gen(:,8)=[1;1;1;1];
+
     results(i,1)=dcopf(mpc);
+    
+    if results(i,1).gen(4,2)<18000
+        clear results(i,1)
+        mpc.gen(:,8)=[0;0;1;1];
+        results(i,1)=dcopf(mpc);
+
+    end
+        
     %Results of DCOPF Gen Allocation
     GenAlloc(i,:)=results(i,1).gen(:,2);
     %Load at this instant
