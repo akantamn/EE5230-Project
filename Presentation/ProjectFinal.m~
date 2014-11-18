@@ -13,8 +13,9 @@ Residence1Row=reshape((700*Residence1)',[],1);
 Residence2Row=reshape((700*Residence2)',[],1);
 Residence3Row=reshape((700*Residence3)',[],1);
 CommercialRow=reshape((100*Commercial)',[],1);
-IndustrialRow=reshape((2*Industrial)',[],1);
+IndustrialRow=reshape((Industrial)',[],1);
 
+ConsolidatedRow=Residence1Row+Residence2Row+Residence3Row+CommercialRow+IndustrialRow;
 %Maximum solar and wind generation capacity = total energy of all
 %Residenca1 and Recidence2 respectively
 SolarRow=reshape(700*Solar24',[],1);
