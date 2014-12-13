@@ -47,9 +47,9 @@ for i=3811:4192 %size(IndustrialRow,1)
     
     if results(i,1).gen(4,2)<18000
         clear results(i,1)
-        mpc.gen(:,8)=[0;0;1;1];
+    mpc.bus(:,3) = [Residence1Row(i,1);Residence2Row(i,1);2*Residence3Row(i,1);CommercialRow(i,1);IndustrialRow(i,1)];
         results(i,1)=dcopf(mpc);
-
+        chargepoint(i)=20000;
     end
         
     %Results of DCOPF Gen Allocation
@@ -84,4 +84,5 @@ tempAlloc(:,5)=GenSum(3811:4192);
  xlabel('Hours')
  ylabel('MW')
  xlim([3811,4192])
+ plot(chargepoint,'s','MarkerSize',5,'MarkerFaceColor','b')
  

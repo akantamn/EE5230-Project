@@ -25,7 +25,7 @@ RenewPercent=0.3; %What percentage of residents install net metered renewable?
 
 %running only for first 10 days, modify the iteration count to run for
 %whole year
-for i=1:240 %size(IndustrialRow,1)
+for i=1:10%size(IndustrialRow,1)
     %Modify load at each bus according to load profiles
     mpc.bus(:,3) = [Residence1Row(i,1);Residence2Row(i,1);Residence3Row(i,1);CommercialRow(i,1);IndustrialRow(i,1)];
     %Modify max gen capacity for each generator based on available Solar
